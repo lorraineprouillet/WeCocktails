@@ -12,7 +12,7 @@
         android:layout_height="57dp"
         android:text="Demarrer"
         tools:layout_editor_absoluteX="131dp"
-        tools:layout_editor_absoluteY="400dp" />
+        tools:layout_editor_absoluteY="427dp" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -20,6 +20,6 @@
         android:layout_height="820dp"
         app:srcCompat="@drawable/captureandroid_menu"
         tools:layout_editor_absoluteX="-274dp"
-        tools:layout_editor_absoluteY="0dp" />
+        tools:layout_editor_absoluteY="-2dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
