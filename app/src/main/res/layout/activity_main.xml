@@ -10,19 +10,21 @@
         android:id="@+id/button"
         android:layout_width="149dp"
         android:layout_height="57dp"
+        android:layout_marginStart="336dp"
+        android:layout_marginTop="427dp"
         android:background="#00BCD4"
         android:text="Demarrer"
         app:backgroundTint="#60FFFFFF"
         app:iconTint="#FFFFFF"
-        tools:layout_editor_absoluteX="131dp"
-        tools:layout_editor_absoluteY="427dp" />
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="959dp"
         android:layout_height="820dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/captureandroid_menu"
-        tools:layout_editor_absoluteX="-274dp" />
+        app:srcCompat="@drawable/captureandroid_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
