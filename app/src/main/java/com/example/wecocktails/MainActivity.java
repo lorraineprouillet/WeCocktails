@@ -7,6 +7,7 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
+    Button boutonDemarrer;
     //private Button play;
 
     @Override
@@ -14,8 +15,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        boutonDemarrer = (Button) findViewById(R.id.button);
 
+        boutonDemarrer.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // ovuerture de l'activité Page Recherche
+                Intent intent = new Intent(MainActivity.this, PageRecherche.class);
+                startActivity(intent);
 
+            }
+        });
 
 
         }
