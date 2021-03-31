@@ -4,27 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/captureandroid_menu"
     tools:context=".MainActivity">
 
     <Button
         android:id="@+id/button"
         android:layout_width="149dp"
         android:layout_height="57dp"
-        android:layout_marginStart="336dp"
-        android:layout_marginTop="427dp"
         android:background="#00BCD4"
         android:text="Demarrer"
         app:backgroundTint="#60FFFFFF"
         app:iconTint="#FFFFFF"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="959dp"
-        android:layout_height="820dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.477"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/captureandroid_menu" />
+        app:layout_constraintVertical_bias="0.529" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
