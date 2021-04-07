@@ -13,7 +13,7 @@ public class MainActivity<lateinit, adapter> extends AppCompatActivity {
     Button boutonDemarrer;
     //private Button play;
 
-    private lateinit var adapter : ArrayAdapter<*>
+
 
 
     @Override
