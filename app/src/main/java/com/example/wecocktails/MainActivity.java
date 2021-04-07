@@ -7,7 +7,7 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button boutonDemarrer;
+    Button boutonDemarrer*
     //private Button play;
 
     @Override
