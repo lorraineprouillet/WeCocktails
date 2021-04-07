@@ -15,10 +15,6 @@ public class PageSelect extends AppCompatActivity {
         SQLiteDatabase maBase;
 
 
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
 
 
             try {
@@ -44,9 +40,12 @@ public class PageSelect extends AppCompatActivity {
                 maBase.execSQL("insert into cocktail (nom, alcool_principal,ingrediants ) values ('Spritz', 'Vin blanc ', '6cl Vin blanc petillant, 4cl Aperol, 2cl eau gazeuse, rondelle orange, glaçons  ');");
                 maBase.execSQL("insert into cocktail (nom, alcool_principal,ingrediants ) values ('Tequila Sunrise ', 'Tequila', '6cl Tequila, 12cl Jus orange, 2cl grenadine, glaçons');");
                 maBase.execSQL("insert into cocktail (nom, alcool_principal,ingrediants ) values ('Tit Punch ', 'Rhum', '5cl Rhum blanc , 2cl sirop sucre de canne , quartier citron vert  ');");
-            }
+
 
 
         //poolparty
-    }
+    } catch (SQLException e) {
+                // s'il y a eu un probleme lors de l'exécution de la requete, on le capture
+                Log.e("execSQL", "Erreur SQL : " + e.getMessage());
+            }
 }
