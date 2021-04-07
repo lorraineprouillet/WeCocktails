@@ -22,7 +22,6 @@ public class MainActivity<lateinit, adapter> extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        adapter = ArrayAdapter( context: this,android.R.layout.simple_list_item_1, resources.GetStringArray(R.array.ListCocktails))
 
 
         boutonDemarrer = (Button) findViewById(R.id.button);

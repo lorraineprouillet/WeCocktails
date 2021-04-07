@@ -20,7 +20,7 @@
         android:text="No Results"
         android:textSize="20sp"
         android:visibility="gone"
-        android:layout_centerInParent="true"
+        android:layout_centerInParent="true" />
 
 
 
