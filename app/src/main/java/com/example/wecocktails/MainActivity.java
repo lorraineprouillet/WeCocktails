@@ -5,17 +5,25 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity<lateinit, adapter> extends AppCompatActivity {
 
     Button boutonDemarrer;
     //private Button play;
+
+    private lateinit var adapter : ArrayAdapter<*>
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        adapter = ArrayAdapter( context: this,android.R.layout.simple_list_item_1, resources.GetStringArray(R.array.ListCocktails))
+
 
         boutonDemarrer = (Button) findViewById(R.id.button);
 
