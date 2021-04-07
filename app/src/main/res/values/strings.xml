@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">WeCocktails</string>
+
+
+    <string-array name="ListCocktails">
+        <item>Mojito</item>
+        <item>Sex on the beach</item>
+        <item>Martini</item>
+        <item>Blue lagoon</item>
+    </string-array>
 </resources>
