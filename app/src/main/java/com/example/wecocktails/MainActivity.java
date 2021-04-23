@@ -37,6 +37,7 @@ public class MainActivity<lateinit, adapter> extends AppCompatActivity {
         });
 
 
+
         }
 
     }
