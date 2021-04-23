@@ -51,6 +51,6 @@ public class PageSelect extends AppCompatActivity {
         spinner_cocktail  = findViewById(R.id.spinner_pkm);
         fenetre_resultat  = findViewById(R.id.resultat);
 
-
+//pull
     }
 }
