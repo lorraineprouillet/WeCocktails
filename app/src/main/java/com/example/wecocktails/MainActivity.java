@@ -30,7 +30,7 @@ public class MainActivity<lateinit, adapter> extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // ovuerture de l'activité Page Recherche
-                Intent intent = new Intent(MainActivity.this, PageRecherche.class);
+                Intent intent = new Intent(MainActivity.this, PageSelect.class);
                 startActivity(intent);
 
             }
