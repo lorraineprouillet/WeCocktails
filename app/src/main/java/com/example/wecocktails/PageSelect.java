@@ -6,15 +6,18 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 public class PageSelect extends AppCompatActivity {
+    Spinner spinner_cocktail;
+    TextView fenetre_resultat;
+    SQLiteDatabase maBase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_page_select);
-
-        SQLiteDatabase maBase;
 
 
         try {
@@ -44,7 +47,9 @@ public class PageSelect extends AppCompatActivity {
             // s'il y a eu un probleme lors de l'exécution de la requete, on le capture
             Log.e("execSQL", "Erreur SQL : " + e.getMessage());
         }
-        ;
+        // on associe ensuitre les références objets  aux éléments de l'activité
+        spinner_cocktail  = findViewById(R.id.spinner_pkm);
+        fenetre_resultat  = findViewById(R.id.resultat);
 
 
     }
