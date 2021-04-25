@@ -28,7 +28,7 @@ public class PageRecherche extends AppCompatActivity {
         setContentView(R.layout.activity_page_select);
 
 
-        try {
+        try { //créqtion de la base de données des cocktails
             maBase = openOrCreateDatabase("maBaseDeDonneesCocktails", MODE_PRIVATE, null);
 
             maBase.execSQL("CREATE TABLE IF NOT EXISTS cocktail(" +
@@ -36,9 +36,9 @@ public class PageRecherche extends AppCompatActivity {
                     " alcool_principal text NOT NULL," +
                     " ingrediants text );"
             );
-            // on la vide (sinon on recréerait a chaque fois les pokemon a chaque nouveau lancement)
+            // on la vide
             maBase.execSQL(" delete from cocktail where 1;");
-            // on la remplit de quelques elements  la table pokemon
+            // on la remplit
             maBase.execSQL("insert into cocktail (nom, alcool_principal,ingrediants ) values ('Bloody Mary', 'Vodka','4cl Vodka, 12cl jus de tomates, 0,5cl citron, 0,5clworcestershire sauce, tabasco');");
             maBase.execSQL("insert into cocktail (nom, alcool_principal,ingrediants ) values ('Blue Lagoon', 'Vodka', '4cl Vodka, 3cl Curaçao, 2cl citron, glaçons ');");
             maBase.execSQL("insert into cocktail (nom, alcool_principal,ingrediants ) values ('Daiquiri', 'Rhum', '4cl Rhum, 2cl jus de citron vert, 1cl sirop sucre de canne ');");
@@ -55,12 +55,12 @@ public class PageRecherche extends AppCompatActivity {
             // s'il y a eu un probleme lors de l'exécution de la requete, on le capture
             Log.e("execSQL", "Erreur SQL : " + e.getMessage());
         }
-        // on associe ensuitre les références objets  aux éléments de l'activité
+
         spinner_cocktail  = findViewById(R.id.spinner_ckt);
         fenetre_resultat  = findViewById(R.id.resultat);
 
-        // on crée un tableau de string appelé results qui va contenir les pokemons de la base que l'on veut dans le spinner
-        // par exemple on ne va afficher que les pokemon Dragon
+        // on crée un tableau de string appelé results qui va contenir les cocktails de la base que l'on veut dans le spinner
+        // par exemple on ne va afficher que les cocktails contenant de la vodka
         final ArrayList<String> results = new ArrayList<String>();
         try {
             // on execute la requete SQL et on récupère les résultats dans un Cursor c
@@ -83,15 +83,14 @@ public class PageRecherche extends AppCompatActivity {
         // on lie enfin le spinner avec l'adapteur créé
         spinner_cocktail.setAdapter(monAdapter);
 
-        // On définit enfin ce qu'on fait quand on selectionne un pokemon du menu deroulant
+        // On définit enfin ce qu'on fait quand on selectionne un cocktail du menu deroulant
         spinner_cocktail.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                // On récupère l'alcool choisi dans une variable
+                // On récupère le cocktail choisi dans une variable
                 String cocktailChoisi = parent.getSelectedItem().toString();
-                //Intent intent = new Intent(PageSelect.this, PageRecherche.class);
-                //startActivity(intent);
+                //pour par la suite afficher sa recette entière.
 
             }
 
