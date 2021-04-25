@@ -88,7 +88,7 @@ public class PageRecherche extends AppCompatActivity {
 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                // On récupère le pokemon choisi dans une variable
+                // On récupère l'alcool choisi dans une variable
                 String cocktailChoisi = parent.getSelectedItem().toString();
                 //Intent intent = new Intent(PageSelect.this, PageRecherche.class);
                 //startActivity(intent);
