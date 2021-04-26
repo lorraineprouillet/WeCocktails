@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -22,6 +23,7 @@ public class PageSelect extends AppCompatActivity {
     Spinner spinner_alcool; //Un spinner (une liste déroulante)
     TextView fenetre_resultat; //Une fenêtre de résultat
     SQLiteDatabase maBase; //Et une base de donnée contenant de nombreux alcools différents
+    Button BoutonAlcool; //Qui permettra de changer de page
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,17 +41,11 @@ public class PageSelect extends AppCompatActivity {
             maBase.execSQL(" delete from alcool where 1;");
             // on la remplit de quelques elements
             maBase.execSQL("insert into alcool (alcool_principal) values ('Vodka');");
-            maBase.execSQL("insert into alcool (alcool_principal) values ('Vodka');");
             maBase.execSQL("insert into alcool (alcool_principal) values ('Rhum');");
             maBase.execSQL("insert into alcool (alcool_principal) values ('Gin');");
-            maBase.execSQL("insert into alcool (alcool_principal) values ('Vodka');");
-            maBase.execSQL("insert into alcool (alcool_principal) values ('Rhum');");
-            maBase.execSQL("insert into alcool (alcool_principal) values ('Rhum');");
-            maBase.execSQL("insert into alcool (alcool_principal) values ('Rhum');");
-            maBase.execSQL("insert into alcool (alcool_principal) values ('Vodka');");
             maBase.execSQL("insert into alcool (alcool_principal) values ('Vin blanc ');");
             maBase.execSQL("insert into alcool (alcool_principal) values ('Tequila');");
-            maBase.execSQL("insert into alcool (alcool_principal) values ('Rhum');");
+
         } catch (SQLException e) {
             // s'il y a eu un probleme lors de l'exécution de la requete, on le capture
             Log.e("execSQL", "Erreur SQL : " + e.getMessage());
@@ -66,7 +62,7 @@ public class PageSelect extends AppCompatActivity {
             Cursor c = maBase.rawQuery("Select alcool_principal from alcool order by alcool_principal asc;", null);
             // on ajoute chaque ligne du cursor dans le tableau results
             while (c.moveToNext()) {
-                String a = c.getString(c.getColumnIndex("nom"));
+                String a = c.getString(c.getColumnIndex("alcool_principal"));
                 results.add(a);
                 System.out.println(a+"debug");
             }
@@ -87,17 +83,34 @@ public class PageSelect extends AppCompatActivity {
             //on place des écouteurs sur les alcools du menu déroulant
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                // lorsqu'un alcool est choisi, on le récupeère dans une variable pour la suite et on change de page
+                // lorsqu'un alcool est choisi, on l'affiche sur le bouton cliquable pour la suite :
                 String alcoolChoisi = parent.getSelectedItem().toString();
-                //Intent intent = new Intent(PageSelect.this, PageRecherche.class);
-                //startActivity(intent);
+                BoutonAlcool.setText(alcoolChoisi);
+
 
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-            } //si rien n'est cliqué
+            } //si rien n'est selectionné
 
+        });
+
+        BoutonAlcool = (Button) findViewById(R.id.resultat);
+
+        BoutonAlcool.setOnClickListener(new View.OnClickListener() {
+            //On place un écouteur sur le bouton pour savoir quand est ce qu'on aura cliquer dessus
+            @Override
+            public void onClick(View view) {
+                //Lorsqu'on clique on effectue les actions suivantes :
+                //Ouverture de l'activité Page Recherche qui présentera les différents cocktails associés
+                String str = BoutonAlcool.getText().toString();
+                //On récupère dans une variable l'alcool choisi afin de garder cette variable dans l'activité suivante
+                Intent intent = new Intent(PageSelect.this, PageRecherche.class);
+                //intent.putExtra("alcoolChoisi", str); //Put extra permets de passer cette variable dans la prochaine activité
+                startActivity(intent);
+
+            }
         });
 
     }
