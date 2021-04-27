@@ -25,14 +25,14 @@ public class PageRecherche extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_page_select);
+        setContentView(R.layout.activity_page_recherche);
         Intent intent = getIntent();
 
         if (intent != null) {
 
             String alcoolChoisi = "";
-           if (intent.hasExtra("alcool")){ // vérifie qu'une valeur est associée à la clé “edittext”
-                alcoolChoisi = intent.getStringExtra("alcool"); // on récupère la valeur associée à la clé
+           if (intent.hasExtra("alcoolChoisi")){ // vérifie qu'une valeur est associée à la clé “edittext”
+                alcoolChoisi = intent.getStringExtra("alcoolChoisi"); // on récupère la valeur associée à la clé
            }
 
             fenetre_resultat = findViewById(R.id.resultat);
@@ -86,11 +86,11 @@ public class PageRecherche extends AppCompatActivity {
             }
 
             // On cree un ArrayAdapter à partir de results et on sélectionne la mise en forme par defaut
-            ArrayAdapter monAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, results);
+            ArrayAdapter monAdapter1 = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, results);
 
 
             // on lie enfin le spinner avec l'adapteur créé
-            spinner_cocktail.setAdapter(monAdapter);
+            spinner_cocktail.setAdapter(monAdapter1);
 
             // On définit enfin ce qu'on fait quand on selectionne un cocktail du menu deroulant
             spinner_cocktail.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
