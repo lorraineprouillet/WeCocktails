@@ -43,7 +43,7 @@ public class PageSelect extends AppCompatActivity {
             maBase.execSQL("insert into alcool (alcool_principal) values ('Vodka');");
             maBase.execSQL("insert into alcool (alcool_principal) values ('Rhum');");
             maBase.execSQL("insert into alcool (alcool_principal) values ('Gin');");
-            maBase.execSQL("insert into alcool (alcool_principal) values ('Vin blanc ');");
+            maBase.execSQL("insert into alcool (alcool_principal) values ('Vin blanc');");
             maBase.execSQL("insert into alcool (alcool_principal) values ('Tequila');");
 
         } catch (SQLException e) {
@@ -107,7 +107,7 @@ public class PageSelect extends AppCompatActivity {
                 String str = BoutonAlcool.getText().toString();
                 //On récupère dans une variable l'alcool choisi afin de garder cette variable dans l'activité suivante
                 Intent intent = new Intent(PageSelect.this, PageRecherche.class);
-                //intent.putExtra("alcoolChoisi", str); //Put extra permets de passer cette variable dans la prochaine activité
+                intent.putExtra("alcoolChoisi", str); //Put extra permets de passer cette variable dans la prochaine activité
                 startActivity(intent);
 
             }
