@@ -130,6 +130,7 @@ public class PageRecherche extends AppCompatActivity {
                                         View view, int position, long rowId) {
                     // On récupère le nom du cocktail choisi dans une variable
                     String cocktailChoisi = list_cocktail.getSelectedItem().toString() ;
+                    //cette ligne est fausse et fait planté le passage a la pageRecette
                     //pour par la suite pouvoir afficher sa recette entière.
 
                     //On récupère dans une variable l'alcool choisi afin de garder cette variable dans l'activité suivante
