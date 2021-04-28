@@ -20,7 +20,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class PageRecherche extends AppCompatActivity {
-    ListView scroll_cocktail;
+    ListView list_cocktail;
     TextView fenetre_resultat;
     SQLiteDatabase maBase;
 
@@ -71,7 +71,7 @@ public class PageRecherche extends AppCompatActivity {
                 Log.e("execSQL", "Erreur SQL : " + e.getMessage());
             }
 
-            scroll_cocktail = findViewById(R.id.scroll_ckt);
+            list_cocktail = findViewById(R.id.scroll_ckt);
 
 
             // on crée un tableau de string appelé results qui va contenir les cocktails de la base que l'on veut dans le spinner
@@ -106,26 +106,31 @@ public class PageRecherche extends AppCompatActivity {
                         String a = c.getString(c.getColumnIndex("nom"));
                         results.add(a);
                     }
+                } else if (fenetre_resultat.getText().toString().equals( "Gin")) {
+                    Cursor c = maBase.rawQuery("Select nom from cocktail WHERE alcool_principal='Gin' order by nom asc;", null);
+                    while (c.moveToNext()) {
+                        String a = c.getString(c.getColumnIndex("nom"));
+                        results.add(a);
+                    }
                 }
             } catch (SQLiteException se) {
                 Log.e("rawQuery", "Probleme SQL");
             }
 
-            // On cree un ArrayAdapter à partir de results et on sélectionne la mise en forme par defaut
+            // On cree un ArrayAdapter à partir de results et on sélectionne la mise en forme avec des items cliquables
             ArrayAdapter monAdapter1 = new ArrayAdapter(this, android.R.layout.simple_selectable_list_item, results);
 
-
-            // on lie enfin le spinner avec l'adapteur créé
-            scroll_cocktail.setAdapter(monAdapter1);
+            list_cocktail.setAdapter(monAdapter1);
 
             // On définit enfin ce qu'on fait quand on selectionne un cocktail du menu deroulant
-            scroll_cocktail.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            list_cocktail.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
                 @Override
-                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    // On récupère le cocktail choisi dans une variable
-                    String cocktailChoisi = parent.getSelectedItem().toString();
-                    //pour par la suite afficher sa recette entière.
+                public void onItemClick(AdapterView<?> adapterView,
+                                        View view, int position, long rowId) {
+                    // On récupère le nom du cocktail choisi dans une variable
+                    String cocktailChoisi = list_cocktail.getSelectedItem().toString() ;
+                    //pour par la suite pouvoir afficher sa recette entière.
 
                     //On récupère dans une variable l'alcool choisi afin de garder cette variable dans l'activité suivante
                     Intent intent = new Intent(PageRecherche.this, PageRecette.class);
@@ -134,9 +139,7 @@ public class PageRecherche extends AppCompatActivity {
 
                 }
 
-                @Override
-                public void onNothingSelected(AdapterView<?> parent) {
-                }
+
 
             });
 
