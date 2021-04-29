@@ -128,14 +128,15 @@ public class PageRecherche extends AppCompatActivity {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView,
                                         View view, int position, long rowId) {
-                    // On récupère le nom du cocktail choisi dans une variable
-                    String cocktailChoisi = list_cocktail.getSelectedItem().toString() ;
-                    //cette ligne est fausse et fait planté le passage a la pageRecette
+                    // On récupère le nom du cocktail cliqué dans une variable
+                    String cocktailChoisi = results.get(position);
+                    System.out.println(cocktailChoisi);
                     //pour par la suite pouvoir afficher sa recette entière.
 
                     //On récupère dans une variable l'alcool choisi afin de garder cette variable dans l'activité suivante
                     Intent intent = new Intent(PageRecherche.this, PageRecette.class);
-                    intent.putExtra("cocktailChoisi", cocktailChoisi); //Put extra permets de passer cette variable dans la prochaine activité
+                    intent.putExtra("cocktailChoisi", cocktailChoisi);//Put extra permets de passer cette variable dans la prochaine activité
+
                     startActivity(intent);
 
                 }
