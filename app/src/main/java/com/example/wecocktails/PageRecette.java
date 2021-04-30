@@ -63,7 +63,7 @@ public class PageRecette extends AppCompatActivity {
             } catch (SQLException e) {
                 // s'il y a eu un probleme lors de l'exécution de la requete, on le capture
                 Log.e("execSQL", "Erreur SQL : " + e.getMessage());
-
+            }
                 recette = findViewById(R.id.recette_ckt);
 
                 String Ckt = cocktailChoisi;
@@ -72,7 +72,7 @@ public class PageRecette extends AppCompatActivity {
                 final ArrayList<String> results = new ArrayList<String>();
                 try {
                     // on execute la requete SQL et on récupère les résultats dans un Cursor c
-                    Cursor c = maBase.rawQuery("Select ingrediants from cocktail WHERE alcool_principal='" + Ckt + "' ;", null);
+                    Cursor c = maBase.rawQuery("Select ingrediants from cocktail WHERE alcool_principal='"+Ckt+ "';", null);
 
                     while (c.moveToNext()) {
                         String a = c.getString(c.getColumnIndex("ingrediants"));
@@ -82,16 +82,15 @@ public class PageRecette extends AppCompatActivity {
 
                 } //si jamais il y a un problème avec la requête
                 catch (SQLiteException se ) {
-                    Log.e("rawQuery", "Probleme SQL");
-
-
+                    Log.e("rawQuery", "Problem SQL");
                 }
 
                 // On cree un ArrayAdapter à partir de results et on sélectionne la mise en forme avec des items cliquables
                 ArrayAdapter monAdapter1 = new ArrayAdapter(this, android.R.layout.simple_list_item_1, results);
-
                 recette.setAdapter(monAdapter1);
-            }
+
+
+
 
         }
     }
