@@ -72,7 +72,7 @@ public class PageRecette extends AppCompatActivity {
                 final ArrayList<String> results = new ArrayList<String>();
                 try {
                     // on execute la requete SQL et on récupère les résultats dans un Cursor c
-                    Cursor c = maBase.rawQuery("Select ingrediants from cocktail WHERE alcool_principal='"+Ckt+ "';", null);
+                    Cursor c = maBase.rawQuery("Select ingrediants from cocktail WHERE nom ='"+Ckt+ "';", null);
 
                     while (c.moveToNext()) {
                         String a = c.getString(c.getColumnIndex("ingrediants"));
